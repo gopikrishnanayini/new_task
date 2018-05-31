@@ -1,0 +1,22 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+%body
+  .container
+    = form_for [@book,@author] do |f|  
+      %p 
+        = f.label "First Name"
+        = f.text_field:first_name
+      %p 
+        = f.label "Last Name"
+        = f.text_field:last_name
+      %p 
+        = f.label "Date of birth"
+        = f.date_field:date_of_birth
+      %p 
+        = f.submit "Submit"

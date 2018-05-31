@@ -1,0 +1,30 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"}
+    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+%body
+  .container
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th First name
+          %th Last Name
+          %th Date of birth
+          %th Actions
+      %tbody
+        - @authors.each do |author|
+          %tr
+            %td= author.first_name
+            %td= author.last_name
+            %th= author.date_of_birth.in_time_zone('Kolkata')
+            %td= link_to "edit", edit_author_path(:id => author.id)
+            %td= link_to "show", author_path(:id =>author.id)
+            %td= link_to "delete", author_path(:id => author.id), :method => :delete
+            %td= link_to "BOOK", new_author_book_path(:author_id => author.id)
+= link_to "New Author", new_author_path
+%br
+= link_to "New Book", new_book_path
