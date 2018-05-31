@@ -1,4 +1,14 @@
-= form_for [@author, @book] do |f|
+- if params[:author_id].present?
+  = form_for [@author, @book] do |f|
+   
+    %p 
+      = f.label "Title"
+      = f.text_field:title
+
+    %p 
+      = f.submit "Submit"
+- else
+  = form_for @book do |f|
  
   %p 
     = f.label "Title"
@@ -6,10 +16,3 @@
 
   %p 
     = f.submit "Submit"
-    / %p 
-    /   - authors = Author.all.pluck(:first_name)
-    /   - authors.each_with_index do |author, index|
-    /     %label
-    /       = f.check_box :author_names, { multiple: true }
-    /       %span
-    /         = author[0]
